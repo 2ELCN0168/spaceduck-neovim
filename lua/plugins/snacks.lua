@@ -76,6 +76,15 @@ return {
         Snacks.toggle.scroll():map("<leader>us")
         Snacks.toggle.zen():map("<leader>uz")
         Snacks.toggle.zoom():map("<leader>uZ")
+        Snacks.toggle({
+          name = "Git Signs",
+          get = function()
+            return require("gitsigns.config").config.signcolumn
+          end,
+          set = function(state)
+            require("gitsigns").toggle_signs(state)
+          end,
+        }):map("<leader>uG")
       end,
     })
   end,
