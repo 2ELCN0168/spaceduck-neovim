@@ -1,3 +1,5 @@
 return {
-  'cocopon/iceberg.vim',
+  "cocopon/iceberg.vim",
+  lazy = false,
+  priority = 1000,
 }

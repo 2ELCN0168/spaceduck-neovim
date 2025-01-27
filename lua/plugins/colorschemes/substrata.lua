@@ -1,3 +1,5 @@
 return {
-  'kvrohit/substrata.nvim',
+  "kvrohit/substrata.nvim",
+  lazy = false,
+  priority = 1000,
 }

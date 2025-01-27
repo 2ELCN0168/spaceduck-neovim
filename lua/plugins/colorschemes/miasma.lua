@@ -1,3 +1,5 @@
 return {
-  'xero/miasma.nvim',
+  "xero/miasma.nvim",
+  lazy = false,
+  priority = 1000,
 }

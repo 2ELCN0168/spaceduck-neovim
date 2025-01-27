@@ -1,3 +1,5 @@
 return {
-  'overcache/NeoSolarized',
+  "overcache/NeoSolarized",
+  lazy = false,
+  priority = 1000,
 }
