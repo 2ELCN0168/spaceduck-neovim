@@ -6,6 +6,20 @@ return {
     require("themery").setup({
       themes = {
         {
+          name = "Bluloco (Dark)",
+          colorscheme = "bluloco",
+          before = [[
+            vim.opt.background = "dark"
+          ]],
+        },
+        {
+          name = "Bluloco (Light)",
+          colorscheme = "bluloco",
+          before = [[
+            vim.opt.background = "light"
+          ]],
+        },
+        {
           name = "Gruvbox (Dark)",
           colorscheme = "gruvbox",
           before = [[
