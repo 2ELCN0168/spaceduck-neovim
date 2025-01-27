@@ -5,12 +5,13 @@ vim.opt.termguicolors = true
 
 -- INTERFACE
 vim.opt.number = true
-vim.cmd("colorscheme tokyonight")
+-- vim.cmd("colorscheme tokyonight")
 
 -- CODE
 vim.opt.expandtab = true -- tabs are spaces, mainly because of python
 vim.opt.autoindent = true -- copy indent from current line when starting new one
-vim.opt.shiftwidth = 2
+vim.opt.shiftwidth = 8
+vim.opt.tabstop = 8
 vim.opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line, insert mode start position
 
 -- SEARCHING
@@ -22,3 +23,8 @@ vim.opt.smartcase = true -- but make it case sensitive if an uppercase is entere
 -- SPLIT WINDOWS
 vim.opt.splitright = true -- split vertical window to the right
 vim.opt.splitbelow = true -- split horizontal window to the bottom
+
+vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })

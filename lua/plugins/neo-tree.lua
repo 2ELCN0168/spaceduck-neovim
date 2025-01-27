@@ -4,7 +4,7 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
     "MunifTanjim/nui.nvim",
-    -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+    "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
   },
   cmd = "Neotree",
   keys = {
@@ -19,7 +19,6 @@ return {
   end,
   opts = {
     event_handlers = {
-      -- Ajouter des handlers personnalisés pour les événements
       {
         event = "file_moved",
         handler = function(data)
@@ -33,6 +32,38 @@ return {
         end,
       },
     },
+    git_status = {
+      symbols = {
+        -- Change type
+        added     = "✚",
+        deleted   = "✖",
+        modified  = "",
+        renamed   = "󰁕",
+        -- Status type
+        untracked = "",
+        ignored   = "",
+        unstaged  = "󰄱",
+        staged    = "",
+        conflict  = "",
+      },
+    },
+    default_component_configs = {
+        diagnostics = {
+          symbols = {
+            hint = "󰌵",
+            info = " ",
+            warn = " ",
+            error = "",
+          },
+          highlights = {
+            hint = "DiagnosticSignHint",
+            info = "DiagnosticSignInfo",
+            warn = "DiagnosticSignWarn",
+            error = "DiagnosticSignError",
+          },
+        },
+      }
+
   },
   config = function(_, opts)
     require("neo-tree").setup(opts)

@@ -1,0 +1,4 @@
+return {
+  'pineapplegiant/spaceduck',
+  opts = {},
+}

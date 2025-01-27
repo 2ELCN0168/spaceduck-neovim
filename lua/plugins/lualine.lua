@@ -1,84 +1,97 @@
 return {
-  "nvim-lualine/lualine.nvim",
+  'nvim-lualine/lualine.nvim',
+  dependencies = { 'folke/snacks.nvim' },
   lazy = false,
   -- event = "VeryLazy",
   init = function()
-    vim.g.lualine_laststatus = vim.o.laststatus 
+    vim.g.lualine_laststatus = vim.o.laststatus
     if vim.fn.argc(-1) > 0 then
-      vim.o.statusline = " "
+      vim.o.statusline = ' '
     else
       vim.o.laststatus = 0
     end
   end,
   opts = function()
-    local lualine_require = require("lualine")
+    local lualine_require = require 'lualine'
     lualine_require.require = require
     local opts = {
       options = {
         icons_enabled = true,
-        theme = "auto",
+        theme = 'auto',
         globalstatus = vim.o.laststatus == 3,
         disabled_filetypes = {
-          statusline = { "alpha", "dashboard", "ministarter", "snacks_dashboard", "neo-tree" },
+          statusline = { 'alpha', 'dashboard', 'ministarter', 'snacks_dashboard', 'neo-tree' },
         },
-        section_separators = { left = "", right = "" },
-        component_separators = "",
+        section_separators = { left = '', right = '' },
+        component_separators = '',
         always_show_tabline = true,
         ignore_focus = {},
       },
       sections = {
-        lualine_a = { "mode" },
-        lualine_b = { 
-          { 
-            "branch", 
+        lualine_a = { 'mode' },
+        lualine_b = {
+          {
+            'branch',
             always_visible = true,
           },
         },
-        lualine_c = { 
+        lualine_c = {
           {
-            "diagnostics",
-            sources = { "nvim_diagnostic" },
+            'diagnostics',
+            sources = { 'nvim_diagnostic' },
             symbols = {
-              error = " ",
-              warn = " ",
-              info = " ",
-              hint = "󱠇 ",
+              error = ' ',
+              warn = ' ',
+              info = ' ',
+              hint = '󱠇 ',
             },
-            always_visible = true,
+            always_visible = false,
           },
           {
-            "filetype",
+            'filetype',
             icon_only = true,
-            separator = "",
+            separator = '',
             padding = { left = 1, right = 0 },
           },
         },
         lualine_x = {
           {
-            require("lazy.status").updates,
-            cond = require("lazy.status").has_updates,
-            color = function() return { fg = Snacks.util.color("Special") } end,
+            require('lazy.status').updates,
+            cond = require('lazy.status').has_updates,
+            color = function()
+              return { fg = Snacks.util.color 'Special' }
+            end,
           },
           {
-            "diff",
+            'diff',
             symbols = {
-              added = " ",
-              modified = " ",
-              removed = " ",
+              added = ' ',
+              modified = ' ',
+              removed = ' ',
             },
+            source = function()
+              local gitsigns = vim.b.gitsigns_status_dict
+              if gitsigns then
+                return {
+                  added = gitsigns.added,
+                  modified = gitsigns.changed,
+                  removed = gitsigns.removed,
+                }
+              end
+            end,
           },
         },
-        lualine_y = { 
-          { "progress", separator = " ", padding = { left = 1, right = 0 } },
-          { "location", separator = " ", padding = { left = 0, right = 1 } },
+        lualine_y = {
+          { 'progress', separator = ' ', padding = { left = 1, right = 0 } },
+          { 'location', separator = ' ', padding = { left = 0, right = 1 } },
         },
-        lualine_z = { 
+        lualine_z = {
           function()
-            return " " .. os.date("%R")
+            return ' ' .. os.date '%R'
           end,
         },
       },
-      extensions = { "neo-tree", "lazy", "fzf" },
+      extensions = { 'neo-tree', 'lazy', 'fzf' },
     }
     return opts
   end,
