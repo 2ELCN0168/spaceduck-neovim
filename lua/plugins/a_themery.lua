@@ -1,7 +1,7 @@
 return {
   "zaldih/themery.nvim",
   lazy = false,
-  -- priority = 0,
+  priority = 0,
   config = function()
     require("themery").setup({
       themes = {
@@ -247,6 +247,27 @@ return {
         {
           name = "Nightfly (Dark)",
           colorscheme = "nightfly",
+          before = [[
+            vim.opt.background = "dark"
+          ]],
+        },
+        {
+          name = "Cybercrime (Dark)",
+          colorscheme = "cybercrime",
+          before = [[
+            vim.opt.background = "dark"
+          ]],
+        },
+        {
+          name = "Embark (Dark)",
+          colorscheme = "embark",
+          before = [[
+            vim.opt.background = "dark"
+          ]],
+        },
+        {
+          name = "Matrix (Dark)",
+          colorscheme = "thematrix",
           before = [[
             vim.opt.background = "dark"
           ]],
