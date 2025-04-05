@@ -1,7 +1,7 @@
 return {
   "zaldih/themery.nvim",
   lazy = false,
-  priority = 1000,
+  -- priority = 0,
   config = function()
     require("themery").setup({
       themes = {
