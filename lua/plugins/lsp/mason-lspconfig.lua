@@ -12,6 +12,8 @@ return {
       "bashls",
       "dockerls",
       "ansiblels",
+      "pyright",
+      "biome",
     },
   },
 
@@ -47,6 +49,34 @@ return {
               shellcheckPath = "",
             },
           },
+          capabilities = capabilities,
+        })
+      end,
+      -- Ansiblels overrides
+      ["ansiblels"] = function()
+        local lspconfig = require("lspconfig")
+        lspconfig.ansiblels.setup({
+          filetypes = { "yaml.ansible" },
+          settings = {
+            ansible = {
+              ansible = {
+                path = "ansible",
+                useFullyQualifiedCollectionNames = true,
+              },
+              ansibleLint = {
+                enabled = true,
+                path = "ansible-lint",
+              },
+              executionEnvironment = {
+                enabled = false,
+              },
+              completion = {
+                provideRedirectModules = true,
+                provideModuleOptionAliases = true,
+              },
+            },
+          },
+          -- on_attach = on_attach,
           capabilities = capabilities,
         })
       end,

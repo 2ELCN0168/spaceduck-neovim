@@ -19,6 +19,14 @@ return {
         async = false,
         timeout_ms = 500,
       },
+      -- format_on_save = {
+      --   lsp_fallback = false,
+      --   timeout_ms = 500,
+      --   filter = function(bufnr)
+      --     local ft = vim.bo[bufnr].filetype
+      --     return  or ft == "lua" or ft == "sh"
+      --   end,
+      -- },
       formatters = {
         clang_format = {
           command = "clang-format",
@@ -37,6 +45,11 @@ return {
             "-sr",
             "-fn",
           },
+          stdin = true,
+        },
+        ansible_lint = {
+          command = "ansible-lint",
+          args = { "-" },
           stdin = true,
         },
       },
