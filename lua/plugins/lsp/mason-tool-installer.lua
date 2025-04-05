@@ -7,6 +7,7 @@ return {
       "beautysh",
       "clang-format",
       "stylua",
+      "latexindent",
 
       -- LINTERS
       "shellcheck",

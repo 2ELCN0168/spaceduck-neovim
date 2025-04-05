@@ -13,6 +13,7 @@ return {
         lua = { "stylua" },
         sh = { "shfmt" },
         bash = { "shfmt" },
+        tex = { "latexindent" },
       },
       format_on_save = {
         lsp_fallback = false,
@@ -50,6 +51,10 @@ return {
         ansible_lint = {
           command = "ansible-lint",
           args = { "-" },
+          stdin = true,
+        },
+        latexindent = {
+          command = "latexindent",
           stdin = true,
         },
       },

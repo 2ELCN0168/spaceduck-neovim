@@ -14,6 +14,7 @@ return {
       "ansiblels",
       "pyright",
       "biome",
+      "texlab",
     },
   },
 
@@ -78,6 +79,29 @@ return {
           },
           -- on_attach = on_attach,
           capabilities = capabilities,
+        })
+      end,
+      ["texlab"] = function()
+        local lspconfig = require("lspconfig")
+        lspconfig.texlab.setup({
+          capabilities = capabilities,
+          settings = {
+            texlab = {
+              build = {
+                executable = "latexmk",
+                args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
+                onSave = true,
+                forwardSearchAfter = false,
+              },
+              forwardSearch = {
+                executable = "zathura",
+                args = { "--synctex-forward", "%l:1:%f", "%p" },
+              },
+              auxDirectory = ".",
+              bibtexFormatter = "texlab",
+              latexFormatter = "latexindent",
+            },
+          },
         })
       end,
     })
