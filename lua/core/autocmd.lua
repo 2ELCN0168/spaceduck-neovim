@@ -7,6 +7,7 @@
 --   end,
 -- })
 
+-- ANSIBLE FT DETECTION
 vim.api.nvim_create_autocmd("BufRead", {
   pattern = { "*.yml", "*.yaml" },
   callback = function()
@@ -15,5 +16,22 @@ vim.api.nvim_create_autocmd("BufRead", {
     if content:match("%- +name:") or content:match("ansible%.builtin%.") then
       vim.bo.filetype = "yaml.ansible"
     end
+  end,
+})
+
+-- CORRECT UI BACKGROUND GAPS WITH COLORSCHEME
+vim.api.nvim_create_autocmd({ "UIEnter", "ColorScheme" }, {
+  callback = function()
+    local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
+    if not normal.bg then
+      return
+    end
+    io.write(string.format("\027]11;#%06x\027\\", normal.bg))
+  end,
+})
+
+vim.api.nvim_create_autocmd("UILeave", {
+  callback = function()
+    io.write("\027]111\027\\")
   end,
 })
