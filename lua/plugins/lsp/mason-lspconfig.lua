@@ -99,7 +99,8 @@ return {
               },
               auxDirectory = ".",
               bibtexFormatter = "texlab",
-              latexFormatter = "latexindent",
+              -- latexFormatter = "latexindent",
+              latexFormatter = "none",
             },
           },
         })
