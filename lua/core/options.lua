@@ -10,8 +10,8 @@ vim.opt.number = true
 -- CODE
 vim.opt.expandtab = true -- tabs are spaces, mainly because of python
 vim.opt.autoindent = true -- copy indent from current line when starting new one
-vim.opt.shiftwidth = 8
-vim.opt.tabstop = 8
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
 vim.opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line, insert mode start position
 
 -- SEARCHING
