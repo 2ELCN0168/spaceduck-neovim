@@ -13,7 +13,7 @@ return {
         lua = { "stylua" },
         sh = { "shfmt" },
         bash = { "shfmt" },
-        tex = { "latexindent" },
+        -- tex = { "latexindent" },
       },
       format_on_save = {
         lsp_fallback = false,
@@ -53,10 +53,10 @@ return {
           args = { "-" },
           stdin = true,
         },
-        latexindent = {
-          command = "latexindent",
-          stdin = true,
-        },
+        -- latexindent = {
+        --   command = "latexindent",
+        --   stdin = true,
+        -- },
       },
     })
 
